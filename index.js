@@ -74,5 +74,16 @@
     }
   ];
 
+  const jan = (libs.jan = function() {
+    const JAN = 'Jan';
+    return this.holidays.find(month => {
+      return Object.keys(month)[0] === JAN;
+    })[JAN];
+  });
+
+  // const feb = libs.feb = function() {
+  //   return this.holidays[1][]
+  // }
+
   module.exports = libs;
 })(this);

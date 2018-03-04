@@ -1,16 +1,17 @@
 const zh = require('./../');
 
-console.log(zh.holidays[0]);
-console.log(zh.holidays[1]);
-console.log(zh.holidays[2]);
-console.log(zh.holidays[3]);
-console.log(zh.holidays[4]);
-console.log(zh.holidays[5]);
-console.log(zh.holidays[6]);
-console.log(zh.holidays[7]);
-
 test('should return this year.', () => {
   expect(zh.year).toBe(outputZATime().getUTCFullYear());
+});
+
+test('should return array of holidays.', () => {
+  expect(zh.jan()).toEqual([
+    { date: 1, title: "New Year's Day", day: outputDay(1, 1) }
+  ]);
+});
+
+test.skip('should return string `no holidays this month.`', () => {
+  expect(zh.feb()).toBe('no holidays this month.');
 });
 
 test('should have 2 hours difference between UTC and SAST.', () => {
