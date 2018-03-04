@@ -3,6 +3,12 @@
 
   // helpers
 
+  function outputHolidays(MONTH) {
+    return libs.holidays.find(m => {
+      return Object.keys(m)[0] === MONTH;
+    })[MONTH];
+  }
+
   function outputDay(month, date) {
     // outputs day of a specific date
     // => Sun, Mon .....
@@ -36,6 +42,7 @@
 
   libs.holidays = [
     { Jan: [{ date: 1, title: "New Year's Day", day: outputDay(1, 1) }] },
+    { Feb: [] },
     {
       Mar: [
         { date: 21, title: 'Human Rights Day', day: outputDay(3, 21) },
@@ -55,6 +62,7 @@
     {
       Jun: [{ date: 16, title: 'Youth Day', day: outputDay(6, 16) }]
     },
+    { Jul: [] },
     {
       Aug: [
         { date: 9, title: "National Women's day", day: outputDay(8, 9) },
@@ -65,8 +73,14 @@
       Sep: [{ date: 24, title: 'Heritage Day', day: outputDay(9, 24) }]
     },
     {
+      Oct: []
+    },
+    {
+      Nov: []
+    },
+    {
       Dec: [
-        { date: 16, title: 'Day of Reconcilation', day: outputDay(12, 16) },
+        { date: 16, title: 'Day of Reconciliation', day: outputDay(12, 16) },
         { date: 17, title: 'Public holiday', day: outputDay(12, 17) },
         { date: 25, title: 'Christmas Day', day: outputDay(12, 25) },
         { date: 26, title: 'Day of Goodwill', day: outputDay(12, 26) }
@@ -74,16 +88,83 @@
     }
   ];
 
-  const jan = (libs.jan = function() {
+  const jan = (libs.jan = () => {
     const JAN = 'Jan';
-    return this.holidays.find(month => {
-      return Object.keys(month)[0] === JAN;
-    })[JAN];
+    return outputHolidays(JAN);
   });
 
-  // const feb = libs.feb = function() {
-  //   return this.holidays[1][]
-  // }
+  const feb = (libs.feb = () => {
+    const FEB = 'Feb';
+    return outputHolidays(FEB);
+  });
 
-  module.exports = libs;
+  const mar = (libs.mar = () => {
+    const MAR = 'Mar';
+    return outputHolidays(MAR);
+  });
+
+  const apr = (libs.apr = () => {
+    const APR = 'Apr';
+    return outputHolidays(APR);
+  });
+
+  const may = (libs.may = () => {
+    const MAY = 'May';
+    return outputHolidays(MAY);
+  });
+
+  const jun = (libs.jun = () => {
+    const JUN = 'Jun';
+    return outputHolidays(JUN);
+  });
+
+  const jul = (libs.jul = () => {
+    const JUL = 'Jul';
+    return outputHolidays(JUL);
+  });
+
+  const aug = (libs.aug = () => {
+    const AUG = 'Aug';
+    return outputHolidays(AUG);
+  });
+
+  const sep = (libs.sep = () => {
+    const SEP = 'Sep';
+    return outputHolidays(SEP);
+  });
+
+  const oct = (libs.oct = () => {
+    const OCT = 'Oct';
+    return outputHolidays(OCT);
+  });
+
+  const nov = (libs.nov = () => {
+    const NOV = 'Nov';
+    return outputHolidays(NOV);
+  });
+
+  const dec = (libs.dec = () => {
+    const DEC = 'Dec';
+    return outputHolidays(DEC);
+  });
+
+  if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = libs;
+    }
+    exports.zaHolidays = libs;
+  } else if (typeof define === 'function' && define.amd) {
+    define([], function() {
+      return libs;
+    });
+  } else {
+    libs.noConflict = (function(oldLib) {
+      return function() {
+        root.zaHolidays = oldLib;
+        libs.noConflict = undefined;
+        return libs;
+      };
+    })(root.zaHolidays);
+    root['zaHolidays'] = libs;
+  }
 })(this);
