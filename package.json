@@ -1,7 +1,7 @@
 {
   "name": "za-holidays",
   "version": "0.0.1",
-  "description": "outputs holiday in South Africa.",
+  "description": "outputs holidays in South Africa.",
   "main": "index.js",
   "author": "Hirokazu Hirono",
   "license": "MIT",
